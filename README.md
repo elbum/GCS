@@ -6,6 +6,7 @@ Goroutine Parallel Speech Recognition
 https://console.cloud.google.com/apis/dashboard 
 2. Activate Cloud Speech API
 3. Set Environment Config
+
     Windows
  `set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\my-key.json"`
 
