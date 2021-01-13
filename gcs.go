@@ -88,7 +88,7 @@ var wg sync.WaitGroup
 
 func recognize(w io.Writer, file string) error {
 	runtime.GOMAXPROCS(runtime.NumCPU()) // Maximize CPU Utilization
-	throttle := 128
+	throttle := 64
 
 	js := make(results, 10)
 
@@ -130,6 +130,10 @@ func recognize(w io.Writer, file string) error {
 				},
 			})
 
+			if err != nil {
+				return
+			}
+
 			// Print the results.
 			for _, result := range resp.Results {
 				for i, alt := range result.Alternatives {
@@ -140,6 +144,7 @@ func recognize(w io.Writer, file string) error {
 
 				}
 			}
+
 		}(file)
 
 		// Throttling
